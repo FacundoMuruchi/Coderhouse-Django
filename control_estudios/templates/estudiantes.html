@@ -1,0 +1,23 @@
+{%extends "padre.html"%}
+
+{%block titulo%}
+<title>
+    ESTUDIANTES
+</title>
+{%endblock titulo%}
+
+{%block heading%}
+<h1>ESTUDIANTES</h1>
+{%endblock heading%}
+
+{% block contenido %}
+<section>
+    <ul>
+        {%for alumno in estudiante%}
+            <li>
+                {{alumno}}
+            </li>
+        {%endfor%}
+    </ul>
+</section>
+{% endblock contenido %}

@@ -1,0 +1,19 @@
+{%extends "padre.html"%}
+
+{%block titulo%}
+<title>
+    CREAR CURSO
+</title>
+{%endblock titulo%}
+
+{%block heading%}
+<h1>CREAR CURSO</h1>
+{%endblock heading%}
+
+{% block contenido %}
+<form method="post">
+    {% csrf_token %}    
+    {{form.as_p}} {% comment %} .AS_P = RENDER DEL FORMULARIO ENTRE TAGS <p></p> {% endcomment %}
+    <input type="submit" class="btn btn-primary" value"Enviar">
+</form>
+{% endblock contenido %}
