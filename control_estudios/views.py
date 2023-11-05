@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from .models import Estudiante, Curso
 from .forms import CursoForm
 # Create your views here.
@@ -44,8 +43,7 @@ def crear_curso_html_python(request):
         #return redirect("crear-curso")
     
         # GUARDAR Y REDIRECCIONAR
-        url_exitosa = reverse("cursos") #REDIRECCIONAR A LISTA DE CURSOS
-        return redirect(url_exitosa)
+        return redirect("cursos")
     
     else: #CARGAR FORMULARIO INICIAL
         return render(request,"crear-curso.html")
@@ -62,12 +60,14 @@ def crear_curso(request):
             curso.save() # GUARDAR CURSO EN BD
 
             # REDIRIGIR AL LISTADO DE CURSOS
-            url_exitosa = reverse("cursos")
-            return redirect(url_exitosa)
+            return redirect("cursos")
         
-    else: # GET (MUESTRA EL FORM INICIAL)
-        return render(
-            request=request,
-            template_name="crear-curso.html",
-            context={"form": CursoForm()}
-        )
+    else: # GET (MUESTRA LA SEGUNDA VALIDACION)
+        form = CursoForm()
+
+    # RENDERIZA LA PLANTILLA DEL FORMULARIO
+    return render(
+        request=request,
+        template_name="crear-curso.html",
+        context={"form": form}
+    )
